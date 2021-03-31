@@ -8,10 +8,10 @@ This Class implements the Rules For an African Ancient Bowling, The program is w
 * Any non coherent value is not consider that is for example in a frame of 3 launches the pins specified for 
 the 3rd launch plus score of the first 2 launches should not exceed the max value of a frame.
 2. __APP RUN__
-* Run The _python app.py_ . The app prompt for a user entry.
+* Run The _**python app.py**_ . The app prompt for a user entry.
 * Displays the state of the score board and the current score of the player for every coherent input and displays only the previous score for any incoherent input.
 3. __TESTS__
-* The program includes some tests cases, to run the tests _python test_ancientBowling.py_
+* The program includes some tests cases, to run the tests _**python test_ancientBowling**.py_
 
 
 
