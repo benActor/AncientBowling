@@ -17,12 +17,12 @@ class AncientBowling:
         b[-1].extend([empty_space_character])
         return b
 
-    """
-        Sum integer values in a frame
-        :param state: [15, "-", "-"]   ---> frame
-        :return: 15
-    """
     def sum_state(self, state):
+        """
+        Sum integer values in a frame
+        :param state: [15, "-", "-"]
+        :return: 15
+        """
         if not state:
             return 0
         elif isinstance(state[0], int):
@@ -31,14 +31,14 @@ class AncientBowling:
             return self.sum_state(state[1:])
 
 
-    """
+
+    def add_n_values(self, n, board):
+        """
         Sum first n integer values in the Board and add to 15
         :param n: 3
         :param board: [[15, "-", "-"], [7, 8, "-"], [10, "-", "-"]]
         :return: 45
-    """
-
-    def add_n_values(self, n, board):
+        """
         count = n
         pin_sum = 0
         for sub_frame in board:
