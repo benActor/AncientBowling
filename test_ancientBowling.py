@@ -32,6 +32,10 @@ class AncientBowlingTest(TestCase):
         self.assertTrue(self.bowling.last_frame(4, [[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
                                                     [15, 8, 2, 3]]))
 
+    def test_full_frame(self):
+        self.assertFalse(self.bowling.full_frame(frame_pos=1, score_board=[[15, "-", "-"], [7, 6, "-"], ["-", "-", "-"]],
+                                                emp_sp_chr="-"))
+
 
 if __name__ == '__main__':
     main()
