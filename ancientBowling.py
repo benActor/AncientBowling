@@ -64,5 +64,27 @@ class AncientBowling:
                     count -= 1
         return 15 + pin_sum
 
+    """
+        Compute the Score of a frame
+        :param frame: [15, "-", "-"]                                 # a frame in the board
+        :param pos: 0                                                # The position of the frame
+        :param board: [[15, "-", "-"], [7, 8, "-"], [15, "-", "-"]]  # The board
+        :return: 45                                                  # score of the frame at pos 0
+
+    """
+
+    def frame_score(self, frame, pos, board):
+        if self.strike_state(frame):
+            if pos < len(board) - 1:
+                return self.add_n_values(3, board[pos + 1:])
+            return self.sum_state(frame)
+        if self.spare_state(frame):
+            if pos < len(board) - 1:
+                return self.add_n_values(2, board[pos + 1:])
+            else:
+                return self.sum_state(frame)
+        return self.sum_state(frame)
+
+
 
 
