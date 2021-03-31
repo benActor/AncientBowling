@@ -56,5 +56,20 @@ class AncientBowlingTest(TestCase):
         self.assertEqual(21, self.bowling.player_score([[1, 2, 3], [15, "-", "-"]]))
         self.assertEqual(45, self.bowling.player_score([[1, 2, 3], [15, "-", "-"], [8, 1, 3]]))
 
+    def test_valid_last_frame(self):
+        self.assertFalse(self.bowling.valid_last_frame(frame_pos=4, board=[[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                    [15, 8, 2, 3]], emp_sp_chr="-"))
+
+        self.assertTrue(self.bowling.valid_last_frame(frame_pos=4, board=[[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                         [15, 8, "-", "-"]], emp_sp_chr="-"))
+
+        self.assertTrue(
+            self.bowling.valid_last_frame(frame_pos=4, board=[[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                              [5, 8, 2, "-"]], emp_sp_chr="-"))
+
+        self.assertFalse(
+            self.bowling.valid_last_frame(frame_pos=4, board=[[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                              [5, 8, 1, "-"]], emp_sp_chr="-"))
+
 if __name__ == '__main__':
     main()
