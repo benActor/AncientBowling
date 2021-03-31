@@ -116,6 +116,48 @@ class AncientBowling:
             return self.valid_last_frame(frame_pos, board, emp_sp_chr)
         return emp_sp_chr in board[frame_pos] and self.sum_state(board[frame_pos]) < 14
 
+    def complete_15(self, l):
+        """
+
+        :param l: [8, 4]
+        :return: 12
+        """
+        if not l:
+            return 0
+        elif l[0] == 15:
+            return self.complete_15(l[1:])
+        else:
+            return l[0] + self.complete_15(l[1:])
+
+    def max_next(self, l):
+        """
+        Computes the maximum pins score for the next launch
+        :param l: [1, 0]
+        :return: 14
+        """
+        if sum(l) == 15:
+            max_val = 15
+        else:
+            max_val = 15 - self.complete_15(l)
+        return max_val if max_val else 15
+
+    def valid_user_input(self, pins, frame_pos, launch, board, emp_sp_chr):
+        """
+        True if the user input is valid in term of type and possible pins
+        :param pins: "-"
+        :param frame_pos: 4
+        :param launch: 2
+        :param board: [[15, "-", "-"], [8, 1, 2],[1, 2, 12], [6, 4, 5],[15, 8, "-", "-"]]
+        :param emp_sp_chr: "-"
+        :return: False
+        """
+        if isinstance(pins, int):
+            if self.last_frame(frame_pos, board) and self.valid_frame(frame_pos, board, "-"):
+                return pins <= self.max_next(board[frame_pos][:launch])
+            if self.valid_frame(frame_pos, board, emp_sp_chr) :
+                return self.sum_state(board[frame_pos]) + pins <= 15
+        return False
+
 
 
 
