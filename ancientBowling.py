@@ -85,6 +85,9 @@ class AncientBowling:
                 return self.sum_state(frame)
         return self.sum_state(frame)
 
+    def player_score(self, board):
+        return sum(self.frame_score(board[i], i, board) for i in range(len(board)))
+
 
 
 
