@@ -32,9 +32,6 @@ class AncientBowlingTest(TestCase):
         self.assertTrue(self.bowling.last_frame(4, [[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
                                                     [15, 8, 2, 3]]))
 
-    def test_full_frame(self):
-        self.assertFalse(self.bowling.full_frame(frame_pos=1, score_board=[[15, "-", "-"], [7, 6, "-"], ["-", "-", "-"]],
-                                                 emp_sp_chr="-"))
 
     def test_add_n_values(self):
         self.assertEqual(45, self.bowling.add_n_values(3, [[15, "-", "-"], [7, 8, "-"], [15, "-", "-"]]))
