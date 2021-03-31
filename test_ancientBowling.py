@@ -46,6 +46,15 @@ class AncientBowlingTest(TestCase):
         self.assertEqual(11, self.bowling.frame_score([1, 7, 3], 1, [[15, "-", "-"], [1, 7, 3], [14, 1, "-"]]))
         self.assertEqual(6, self.bowling.frame_score([1, 2, 3], 1, [[1, 2, 3], [7, 8, "-"], [14, 1, "-"]]))
 
+    def test_player_score(self):
+        self.assertEqual(300, self.bowling.player_score([[15, "-", "-"], [15, "-", "-"], [15, "-", "-"], [15, "-", "-"],
+                                                         [15, 15, 15, 15]]))
+
+        self.assertEqual(101, self.bowling.player_score([[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                         [15, 8, 2, 3]]))
+
+        self.assertEqual(21, self.bowling.player_score([[1, 2, 3], [15, "-", "-"]]))
+        self.assertEqual(45, self.bowling.player_score([[1, 2, 3], [15, "-", "-"], [8, 1, 3]]))
 
 if __name__ == '__main__':
     main()
