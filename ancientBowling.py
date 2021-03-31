@@ -30,22 +30,6 @@ class AncientBowling:
         else:
             return self.sum_state(state[1:])
 
-    """
-        Return True if a frame is complete
-         :param frame: 1
-         :param score_board: [[15, "-", "-"], [7, 6, "-"], ["-", "-", "-"]]
-         :param empty_space: "-"
-         :return : False
-     """
-
-    def full_frame(self, frame_pos, score_board, emp_sp_chr):
-        if self.strike_state(score_board[frame_pos]):
-            return True
-        if self.spare_state(score_board[frame_pos]):
-            return True
-        if emp_sp_chr not in score_board[frame_pos]:
-            return True
-        return False
 
     """
         Sum first n integer values in the Board and add to 15
