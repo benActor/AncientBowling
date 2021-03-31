@@ -9,7 +9,7 @@ This Class implements the Rules For an African Ancient Bowling
 the 3rd launch plus score of the first 2 launches should not exceed the max value of a frame.
 2. __APP RUN__
 * Run The app.py file. The app prompt for a user entry.
-* Displays the board state and the player score for every coherent input and displays only the previous score for any incoherent input.
+* Displays the state of the score board and the current score of the player for every coherent input and displays only the previous score for any incoherent input.
 
 
 
