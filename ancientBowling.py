@@ -64,16 +64,15 @@ class AncientBowling:
                     count -= 1
         return 15 + pin_sum
 
-    """
-        Compute the Score of a frame
-        :param frame: [15, "-", "-"]                                 # a frame in the board
-        :param pos: 0                                                # The position of the frame
-        :param board: [[15, "-", "-"], [7, 8, "-"], [15, "-", "-"]]  # The board
-        :return: 45                                                  # score of the frame at pos 0
-
-    """
 
     def frame_score(self, frame, pos, board):
+        """
+        Compute the Score of a frame
+        :param frame: [15, "-", "-"]
+        :param pos: 0
+        :param board: [[15, "-", "-"], [7, 8, "-"], [15, "-", "-"]]
+        :return: 45
+        """
         if self.strike_state(frame):
             if pos < len(board) - 1:
                 return self.add_n_values(3, board[pos + 1:])
@@ -87,6 +86,22 @@ class AncientBowling:
 
     def player_score(self, board):
         return sum(self.frame_score(board[i], i, board) for i in range(len(board)))
+
+    def valid_last_frame(self, frame_pos, board, emp_sp_chr):
+        """
+        to check if a shot is still possible in the last frame
+        :param frame_pos: 4
+        :param board: [[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                              [5, 8, 1, "-"]]
+        :param emp_sp_chr: "-"
+        :return: False
+        """
+        if self.last_frame(frame_pos,  board):
+            if emp_sp_chr not in board[frame_pos][:3] and self.sum_state(board[frame_pos][:3]) < 15:
+                return False
+            if emp_sp_chr not in board[frame_pos]:
+                return False
+            return True
 
 
 
