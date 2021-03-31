@@ -103,6 +103,19 @@ class AncientBowling:
                 return False
             return True
 
+    def valid_frame(self, frame_pos, board, emp_sp_chr):
+        """
+        Check if a shot is possible in any frame
+        :param frame_pos: 4
+        :param board: [[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                      [2, 8, 5, "-"]]
+        :param emp_sp_chr: "-"
+        :return: False
+        """
+        if self.last_frame(frame_pos, board):
+            return self.valid_last_frame(frame_pos, board, emp_sp_chr)
+        return emp_sp_chr in board[frame_pos] and self.sum_state(board[frame_pos]) < 14
+
 
 
 
