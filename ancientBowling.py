@@ -98,7 +98,7 @@ class AncientBowling:
         """
         if self.last_frame(frame_pos, board):
             return self.valid_last_frame(frame_pos, board, emp_sp_chr)
-        return emp_sp_chr in board[frame_pos] and self.sum_state(board[frame_pos]) < 14
+        return emp_sp_chr in board[frame_pos] and self.sum_state(board[frame_pos]) <= 14
 
     def complete_15(self, l):
         """
