@@ -127,5 +127,35 @@ class AncientBowlingTest(TestCase):
                                           emp_sp_chr="-"))
 
 
+    def test_shot(self):
+        self.assertEqual(15, self.bowling.shot(15))
+
+        self.assertEqual(31, self.bowling.shot(8))
+
+        self.assertEqual(33, self.bowling.shot(1))
+
+        self.assertEqual(37, self.bowling.shot(2))
+
+        self.bowling.shot(1), self.bowling.shot(2)
+
+        self.assertEqual(52, self.bowling.shot(12))
+
+        self.bowling.shot(6), self.bowling.shot(4), self.bowling.shot(1)
+
+        self.assertEqual(73, self.bowling.player_score(self.bowling.board))
+
+        self.assertEqual(88, self.bowling.shot(15))
+
+        self.assertEqual(88, self.bowling.shot("-"))
+
+        self.assertEqual(96, self.bowling.shot(8))
+
+        self.assertEqual(96, self.bowling.shot(15))
+
+        self.assertEqual(98, self.bowling.shot(2))
+
+        self.assertEqual(101, self.bowling.shot(3))
+
+
 if __name__ == '__main__':
     main()
