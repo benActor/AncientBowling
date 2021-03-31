@@ -158,6 +158,36 @@ class AncientBowling:
                 return self.sum_state(board[frame_pos]) + pins <= 15
         return False
 
+    def shot(self, pins):
+        """
+        Register pins shoot and compute the score of the player
+        :param pins: 15
+        :return: 15
+        """
+        result = self.player_score(self.board)
+        if self.valid_user_input(pins, self.frame, self.launch, self.board, "-"):
+            self.board[self.frame][self.launch] = pins
+            result = self.player_score(self.board)
+            print(self.board)
+
+            if self.valid_frame(self.frame, self.board, "-") and not self.last_frame(self.frame, self.board):
+                self.launch += 1
+            elif not self.valid_frame(self.frame, self.board, "-") and not self.last_frame(self.frame, self.board):
+                self.frame += 1
+                self.launch = 0
+            elif self.valid_frame(self.frame, self.board, "-") and self.last_frame(self.frame,
+                                                                                      self.board) and self.launch < 2:
+                self.launch += 1
+            elif self.valid_frame(self.frame, self.board, "-") and self.last_frame(self.frame,
+                                                                                      self.board) and self.launch == 2 and self.sum_state(
+                    self.board[self.frame]) >= 15:
+                self.launch += 1
+            else:
+                self.launch = 0
+                self.frame = 0
+                self.board = self.create_board("-")
+        return result
+
 
 
 
