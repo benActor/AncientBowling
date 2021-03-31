@@ -78,5 +78,54 @@ class AncientBowlingTest(TestCase):
         self.assertTrue(self.bowling.valid_frame(4, [[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
                                                       [2, 8, 5, "-"]], "-"))
 
+    def test_complete_15(self):
+        self.assertEqual(0, self.bowling.complete_15([15, 15]))
+        self.assertEqual(12, self.bowling.complete_15([8, 4]))
+        self.assertEqual(6, self.bowling.complete_15([15, 6]))
+
+    def test_max_next(self):
+        self.assertEqual(15, self.bowling.max_next([15, 15]))
+
+        self.assertEqual(8, self.bowling.max_next([15, 3, 4]))
+
+        self.assertEqual(11, self.bowling.max_next([15, 15, 4]))
+
+        self.assertEqual(15, self.bowling.max_next([15, 7, 4, 4]))
+
+        self.assertEqual(14, self.bowling.max_next([1, 0]))
+
+    def test_valid_user_input(self):
+        self.assertTrue(self.bowling.valid_user_input(pins=5, frame_pos=3, launch=1, board=[[15, "-", "-"], [8, 1, 2],
+                                                                                          [1, 2, 12], [6, 4, "-"],
+                                                                                          ["-", "-", "-", "-"]],
+                                                      emp_sp_chr="-"))
+
+        self.assertTrue(self.bowling.valid_user_input(pins=0, frame_pos=4, launch=0, board=[[15, "-", "-"], [8, 1, 2],
+                                                                                            [1, 2, 12], [6, 4, 5],
+                                                                                            ["-", "-", "-", "-"]],
+                                                      emp_sp_chr="-"))
+
+        self.assertTrue(self.bowling.valid_user_input(pins=15, frame_pos=4, launch=0, board=[[15, "-", "-"], [8, 1, 2],
+                                                                                            [1, 2, 12], [6, 4, 5],
+                                                                                            ["-", "-", "-", "-"]],
+                                                      emp_sp_chr="-"))
+
+        self.assertTrue(self.bowling.valid_user_input(pins=7, frame_pos=4, launch=2, board=[[15, "-", "-"], [8, 1, 2],
+                                                                                             [1, 2, 12], [6, 4, 5],
+                                                                                             [15, 8, "-", "-"]],
+                                                      emp_sp_chr="-"))
+
+        self.assertFalse(self.bowling.valid_user_input(pins="-", frame_pos=4, launch=2, board=[[15, "-", "-"], [8, 1, 2],
+                                                                                            [1, 2, 12], [6, 4, 5],
+                                                                                            [15, 8, "-", "-"]],
+                                                       emp_sp_chr="-"))
+
+        self.assertFalse(
+            self.bowling.valid_user_input(pins="8", frame_pos=4, launch=2, board=[[15, "-", "-"], [8, 1, 2],
+                                                                                  [1, 2, 12], [6, 4, 5],
+                                                                                  [15, 8, "-", "-"]],
+                                          emp_sp_chr="-"))
+
+
 if __name__ == '__main__':
     main()
