@@ -71,5 +71,12 @@ class AncientBowlingTest(TestCase):
             self.bowling.valid_last_frame(frame_pos=4, board=[[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
                                                               [5, 8, 1, "-"]], emp_sp_chr="-"))
 
+    def test_valid_frame(self):
+        self.assertFalse(self.bowling.valid_frame(1, [[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                      [15, 8, 2, 3]], "-"))
+
+        self.assertTrue(self.bowling.valid_frame(4, [[15, "-", "-"], [8, 1, 2], [1, 2, 12], [6, 4, 1],
+                                                      [2, 8, 5, "-"]], "-"))
+
 if __name__ == '__main__':
     main()
